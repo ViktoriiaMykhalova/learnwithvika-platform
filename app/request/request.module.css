@@ -1,0 +1,108 @@
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:18px 14px 120px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 18px 40px -24px var(--ring);
+}
+
+.title{
+  margin:0 0 6px;
+  font-size:22px;
+}
+
+.sub{
+  margin:0 0 16px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.form{
+  display:grid;
+  gap:12px;
+}
+
+.field{
+  display:grid;
+  gap:6px;
+}
+
+.label{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.input, .textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:var(--chip);
+  color:var(--text);
+  outline:none;
+  font:600 14px Inter,system-ui;
+}
+
+.input::placeholder, .textarea::placeholder{
+  color:color-mix(in oklab, var(--muted) 80%, transparent);
+  font-weight:500;
+}
+
+.input:focus, .textarea:focus{
+  border-color:color-mix(in oklab, var(--accent) 55%, var(--line));
+  box-shadow:0 0 0 6px color-mix(in oklab, var(--accent) 18%, transparent);
+}
+
+.textarea{
+  resize:vertical;
+}
+
+.btn{
+  margin-top:6px;
+  border:none;
+  border-radius:12px;
+  padding:12px 14px;
+  font-weight:800;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 18px 40px -24px var(--ring);
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  transition:.18s ease;
+}
+
+.back{
+  display:inline-block;
+  margin-top:4px;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+}
+
+.back:hover{ text-decoration:underline; }
+
+/* на больших экранах красиво в 2 колонки */
+@media (min-width:680px){
+  .form{
+    grid-template-columns:1fr 1fr;
+  }
+  .full{
+    grid-column:1 / -1;
+  }
+  .btn{
+    grid-column:1 / -1;
+  }
+  .back{
+    grid-column:1 / -1;
+  }
+}

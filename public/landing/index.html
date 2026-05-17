@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Viktoriia English — mobile hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1117; --text:#f1f5f9; --muted:#a8b3c1; --panel:#151823; --chip:#1b2030;
+  --accent:#34d399; --accent-2:#22d3ee; --line:#262b3a; --ring:rgba(52,211,153,.25);
+  color-scheme: dark;
+}
+:root[data-theme="light"]{
+  --bg:#f6fbff; --text:#101317; --muted:#6b7280; --panel:#ffffff; --chip:#f3f6fb;
+  --accent:#10b981; --accent-2:#34d399; --line:#e8ecf3; --ring:rgba(16,185,129,.18);
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg); color:var(--text); line-height:1.55;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme background */
+body {
+  background: linear-gradient(180deg, #0a0e1a 0%, #0f1117 60%, #13151f 100%);
+  background-attachment: fixed;
+}
+
+/* Light theme background */
+:root[data-theme="light"] body {
+  background: linear-gradient(180deg, #f7fff7 0%, #eaffea 60%, #ffffff 100%);
+  background-attachment: fixed;
+}
+
+.container{max-width:760px; margin:0 auto; padding:18px 14px 100px}
+
+/* Profile card */
+.profile-card {
+  background:var(--panel); border:1px solid var(--line); border-radius:22px;
+  padding:20px; box-shadow:0 18px 40px -24px var(--ring); margin-bottom:18px;
+  display:flex; gap:18px; align-items:center; flex-wrap:wrap;
+}
+
+.profile-photo {
+  width:170px; height:170px; border-radius:50%;
+  object-fit:cover; border:3px solid var(--line);
+}
+
+.profile-info {
+  flex:1; min-width:200px;
+}
+
+.profile-info h1 {
+  margin:0 0 6px; font-size:24px;
+}
+
+.profile-info .subtitle {
+  margin:0; color:var(--muted); font-size:14px;
+}
+
+.profile-info .badge {
+  display:inline-block; font-size:12px; padding:6px 10px; 
+  background:var(--chip); border:1px solid var(--line); 
+  border-radius:999px; color:var(--muted); margin-top:8px;
+}
+
+/* Main sections block */
+.main-block {
+  background:var(--panel); border:1px solid var(--line); border-radius:22px;
+  padding:18px; box-shadow:0 18px 40px -24px var(--ring);
+}
+
+/* Section inside main block */
+.section {
+  padding:16px 0; border-bottom:1px solid var(--line);
+}
+
+.section:last-child {
+  border-bottom:none;
+}
+
+.section h2 {
+  margin:0 0 12px; font-size:17px; position:relative; width:max-content;
+  max-width:100%; word-wrap:break-word; line-height:1.3;
+}
+
+.section h2::after {
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:3px; 
+  border-radius:3px; background:linear-gradient(90deg,var(--accent),var(--accent-2));
+}
+
+/* Price grid */
+.price-wrap{display:grid; grid-template-columns:1fr; gap:20px}
+.tier{
+  background:var(--chip); border:1px solid var(--line); border-radius:16px; padding:14px;
+}
+.tier h3{margin:0 0 4px; font-size:16px}
+.tier .note{color:var(--muted); font-size:13px; margin:2px 0 0}
+.price-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px}
+.price-box{
+  background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:12px;
+  text-align:center;
+}
+.price{font-weight:800; font-size:18px}
+.label{font-size:12px; color:var(--muted); margin-top:2px}
+
+/* Lists */
+.list{list-style:none; padding:0; margin:10px 0 0}
+.item{
+  background:var(--chip); border:1px solid var(--line); border-radius:14px;
+  padding:12px; margin:8px 0; display:flex; align-items:center; 
+  justify-content:space-between; gap:8px;
+}
+.item a{
+  color:var(--text); text-decoration:none; font-weight:600;
+  word-break:break-word; flex:1;
+}
+.item a:hover{text-decoration:underline}
+.arrow{opacity:.55; flex-shrink:0;}
+
+/* Footer controls */
+.controls{
+  position:fixed; left:0; right:0; bottom:0; z-index:10;
+  background: color-mix(in oklab, var(--panel) 85%, transparent);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-top:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  padding:12px 14px;
+}
+
+.control-btn {
+  display:flex; align-items:center; gap:8px; padding:10px 16px;
+  border:1px solid var(--line); border-radius:12px; background:var(--panel); 
+  color:var(--text); box-shadow:0 12px 30px -16px var(--ring);
+  cursor:pointer; font:600 13px Inter,system-ui; min-width:90px;
+  justify-content:center;
+}
+
+.control-btn:hover {
+  transform:translateY(-1px);
+  transition:0.2s ease;
+}
+
+/* Floating Telegram button */
+#tgFloat{
+  position:fixed; right:16px; bottom:76px; z-index:20;
+  width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+  display:grid; place-items:center; color:#fff;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  box-shadow:0 18px 30px -14px var(--ring);
+  animation: breathe 3s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,100% { box-shadow:0 18px 28px -16px var(--ring), 0 0 0 0 rgba(16,185,129,0.0)}
+  50% { box-shadow:0 22px 36px -14px var(--ring), 0 0 0 10px rgba(16,185,129,0.15)}
+}
+#tgFloat svg{width:28px; height:28px;}
+
+.footer{color:var(--muted); text-align:center; font-size:12px; margin:20px 0 0; padding-top:16px}
+
+/* Section description */
+.section-desc {
+  color:var(--muted); font-size:13px; margin:8px 0 0; line-height:1.5;
+}
+
+@media (min-width:520px){
+  .price-wrap{grid-template-columns:1fr 1fr}
+}
+
+/* Mobile fixes */
+@media (max-width:600px){
+  .section h2 {
+    font-size:16px;
+  }
+  .price-row{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .price-box {
+    padding:10px;
+  }
+}
+</style>
+</head>
+<body>
+
+<main class="container">
+  <!-- Profile Card -->
+  <section class="profile-card">
+    <img src="photo_2025-07-15_15-04-15.jpg" alt="Viktoriia Mykhalova" class="profile-photo">
+    <div class="profile-info">
+      <h1>Viktoriia Mykhalova</h1>
+      <p class="subtitle" id="subtitle">
+        On this page you can browse my Quizlet flashcards, read about me and my lessons, and write to me in Telegram to book a free trial or check the price list.
+      </p>
+      <span class="badge">A1-B2 level</span>
+    </div>
+  </section>
+
+  <!-- Main Content Block -->
+  <div class="main-block">
+    
+    <!-- PRICE SECTION -->
+    <section class="section" id="price">
+      <h2 id="priceTitle">💰 Price List (PLN)</h2>
+      <div class="price-wrap">
+        <!-- 45 minutes -->
+        <div class="tier">
+          <h3 id="dur45">45-minute lesson</h3>
+          <p class="note" id="trial1">First lesson — FREE</p>
+          <div class="price-row">
+            <div class="price-box">
+              <div class="price">50 zł</div>
+              <div class="label" id="p1_45">for 1 lesson</div>
+            </div>
+            <div class="price-box">
+              <div class="price">200 zł</div>
+              <div class="label" id="p4_45">for 4 lessons</div>
+            </div>
+            <div class="price-box">
+              <div class="price">400 zł</div>
+              <div class="label" id="p8_45">for 8 lessons</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 60 minutes -->
+        <div class="tier">
+          <h3 id="dur60">60-minute lesson</h3>
+          <p class="note" id="trial2">First lesson — free</p>
+          <div class="price-row">
+            <div class="price-box">
+              <div class="price">70 zł</div>
+              <div class="label" id="p1_60">for 1 lesson</div>
+            </div>
+            <div class="price-box">
+              <div class="price">280 zł</div>
+              <div class="label" id="p4_60">for 4 lessons</div>
+            </div>
+            <div class="price-box">
+              <div class="price">480 zł</div>
+              <div class="label" id="p8_60">for 8 lessons (60 zł/lesson)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZLET SECTION -->
+    <section class="section">
+      <h2>📘 Quizlet Flashcards</h2>
+      <p class="section-desc" id="quizletDesc">Interactive flashcards for daily practice</p>
+    </section>
+
+    <!-- SONGS -->
+    <section class="section">
+      <h2>🎵 English through Songs</h2>
+      <ul class="list">
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1085789559/eminem-lose-yourself-flash-cards/?i=6gk2r1&x=1jqt">Eminem — Lose Yourself</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1068911484/not-afraid-eminem-flash-cards/?i=6gk2r1&x=1jqt">Eminem — Not Afraid</a>
+          <span class="arrow">↗</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- BEAUTY -->
+    <section class="section">
+      <h2>💄 English for Beauty Industry</h2>
+      <ul class="list">
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1088791751/fluent-in-beauty-flash-cards/?i=6gk2r1&x=1jqt">Fluent in Beauty</a>
+          <span class="arrow">↗</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- English on the Go -->
+    <section class="section">
+      <h2>English on the Go</h2>
+      <ul class="list">
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/dk/1071281363/in-a-restaurant-flash-cards/?i=6gk2r1&x=1jqt">In a Restaurant</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1101641548/asking-where-a-place-is-flash-cards/?i=6gk2r1&x=1jqt">ASKING WHERE A PLACE IS</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1101421769/where-is-it-flash-cards/?i=6gk2r1&x=1jqt">Where is it</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1095108963/everyday-english-dates-months-abilities-rooms-furniture-places-flash-cards/?i=6gk2r1&x=1jqt">🧠 Everyday English: Dates, Months, Abilities, Rooms, Furniture & Places</a>
+          <span class="arrow">↗</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- LINKING WORDS -->
+    <section class="section">
+      <h2>🗣️ Linking Words & Fillers</h2>
+      <p class="section-desc" id="linkingDesc">Master connectors for fluent speech</p>
+      <ul class="list">
+        <li class="item">
+          <a target="_blank" href="https://quizlet.com/pl/1086817438/linking-words-fillers-flash-cards/?i=6gk2r1&x=1jqt">Useful Linking Words</a>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="item">
+          <a target="_blank" href="https://claude.ai/public/artifacts/1d6448d0-e614-4a60-9f89-95ab70250f7d">Linking Words - PRESENTATION</a>
+          <span class="arrow">↗</span>
+        </li>
+      </ul>
+    </section>
+
+    <p class="footer">© 2025 Viktoriia English</p>
+  </div>
+</main>
+
+<!-- Floating Telegram -->
+<a id="tgFloat" href="tg://resolve?domain=victorious_vv" aria-label="Write in Telegram" title="Write in Telegram">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M21.8 3.2L2.9 10.6c-1 .4-.9 1.9.2 2.2l4.7 1.5 1.8 4.9c.4 1 1.7 1.1 2.2.2l3-4.5 5.1 3.8c.9.7 2.2.2 2.4-1l2.6-12c.3-1.1-.8-2-1.9-1.7z" fill="white" opacity=".9"/>
+  </svg>
+</a>
+
+<!-- Bottom controls -->
+<div class="controls">
+  <button class="control-btn" id="langBtn" aria-label="Language">
+    <span>🌍</span>
+    <span id="langLabel">EN</span>
+  </button>
+  <button class="control-btn" id="themeBtn" aria-label="Toggle theme">
+    <span id="themeIcon">🌙</span>
+    <span id="themeLabel">Dark</span>
+  </button>
+</div>
+
+<script>
+/* Theme toggle */
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+const themeLabel = document.getElementById('themeLabel');
+const themeIcon = document.getElementById('themeIcon');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+root.setAttribute('data-theme', savedTheme);
+themeLabel.textContent = savedTheme === 'dark' ? 'Dark' : 'Light';
+themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '🌞';
+
+themeBtn.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeLabel.textContent = next === 'dark' ? 'Dark' : 'Light';
+  themeIcon.textContent = next === 'dark' ? '🌙' : '🌞';
+});
+
+/* Language toggle */
+const languages = ['en', 'uk', 'ru'];
+let currentLangIndex = 0;
+const savedLang = localStorage.getItem('lang') || 'en';
+currentLangIndex = languages.indexOf(savedLang);
+
+const langBtn = document.getElementById('langBtn');
+const langLabel = document.getElementById('langLabel');
+
+const dict = {
+  en: {
+    subtitle: "On this page you can browse my Quizlet flashcards, read about me and my lessons, and write to me in Telegram to book a free trial or check the price list.",
+    priceTitle: "💰 Price List (PLN)",
+    dur45: "45-minute lesson",
+    dur60: "60-minute lesson",
+    trial: "First lesson — free",
+    p1: "for 1 lesson",
+    p4: "for 4 lessons",
+    p8: "for 8 lessons",
+    p8with: "for 8 lessons (60 zł/lesson)",
+    quizletDesc: "Interactive flashcards for daily practice",
+    linkingDesc: "Master connectors for fluent speech"
+  },
+  ru: {
+    subtitle: "Здесь вы найдёте мои карточки Quizlet, информацию о занятиях и сможете написать в Telegram, чтобы записаться на бесплатный пробный или уточнить прайс.",
+    priceTitle: "💰 Прайс-лист (в злотых)",
+    dur45: "Урок 45 минут",
+    dur60: "Урок 60 минут",
+    trial: "Первое занятие — бесплатно",
+    p1: "за 1 урок",
+    p4: "за 4 занятия",
+    p8: "за 8 занятий",
+    p8with: "за 8 занятий (60 zł за урок)",
+    quizletDesc: "Интерактивные карточки для практики",
+    linkingDesc: "Освойте связки для беглой речи"
+  },
+  uk: {
+    subtitle: "Тут ви знайдете мої картки Quizlet, інформацію про заняття та зможете написати в Telegram, щоб записатися на безкоштовний пробний або дізнатися прайс.",
+    priceTitle: "💰 Прайс-лист (у злотих)",
+    dur45: "Урок 45 хвилин",
+    dur60: "Урок 60 хвилин",
+    trial: "Перше заняття — безкоштовно",
+    p1: "за 1 урок",
+    p4: "за 4 заняття",
+    p8: "за 8 занять",
+    p8with: "за 8 занять (60 zł за урок)",
+    quizletDesc: "Інтерактивні картки для практики",
+    linkingDesc: "Опануйте зв'язки для вільної мови"
+  }
+};
+
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('subtitle').textContent = dict[lang].subtitle;
+  document.getElementById('priceTitle').textContent = dict[lang].priceTitle;
+  document.getElementById('dur45').textContent = dict[lang].dur45;
+  document.getElementById('dur60').textContent = dict[lang].dur60;
+  document.getElementById('trial1').textContent = dict[lang].trial;
+  document.getElementById('trial2').textContent = dict[lang].trial;
+  document.getElementById('p1_45').textContent = dict[lang].p1;
+  document.getElementById('p4_45').textContent = dict[lang].p4;
+  document.getElementById('p8_45').textContent = dict[lang].p8;
+  document.getElementById('p1_60').textContent = dict[lang].p1;
+  document.getElementById('p4_60').textContent = dict[lang].p4;
+  document.getElementById('p8_60').textContent = dict[lang].p8with;
+  document.getElementById('quizletDesc').textContent = dict[lang].quizletDesc;
+  document.getElementById('linkingDesc').textContent = dict[lang].linkingDesc;
+  localStorage.setItem('lang', lang);
+  langLabel.textContent = lang.toUpperCase();
+}
+
+applyLang(savedLang);
+langLabel.textContent = savedLang.toUpperCase();
+
+langBtn.addEventListener('click', () => {
+  currentLangIndex = (currentLangIndex + 1) % languages.length;
+  applyLang(languages[currentLangIndex]);
+});
+</script>
+</body>
+</html>
