@@ -216,6 +216,7 @@ export default function HomePage() {
           min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
           padding-top: 90px; overflow: hidden;
           background: #0e0704;
+          margin-bottom: -4px;
         }
         .lwv-hero-left {
           padding: 60px 48px 60px 40px; display: flex; flex-direction: column;
