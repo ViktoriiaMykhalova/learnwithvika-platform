@@ -13,8 +13,7 @@ type Recommendation = {
 const content = {
   en: {
     title: "Get your study recommendation",
-    subtitle:
-      "Answer a few questions and get a personalized learning recommendation.",
+    subtitle: "Answer a few questions and get a personalized learning recommendation.",
     namePlaceholder: "Your name",
     targetLanguageLabel: "Target language",
     levelLabel: "Current level",
@@ -43,8 +42,7 @@ const content = {
   },
   ru: {
     title: "Получите рекомендацию по обучению",
-    subtitle:
-      "Ответьте на несколько вопросов и получите персональную рекомендацию.",
+    subtitle: "Ответьте на несколько вопросов и получите персональную рекомендацию.",
     namePlaceholder: "Ваше имя",
     targetLanguageLabel: "Изучаемый язык",
     levelLabel: "Текущий уровень",
@@ -73,9 +71,8 @@ const content = {
   },
   ua: {
     title: "Отримайте рекомендацію щодо навчання",
-    subtitle:
-      "Дайте відповіді на кілька запитань і отримайте персональну рекомендацію.",
-    namePlaceholder: "Ваше ім’я",
+    subtitle: "Дайте відповіді на кілька запитань і отримайте персональну рекомендацію.",
+    namePlaceholder: "Ваше ім'я",
     targetLanguageLabel: "Мова для вивчення",
     levelLabel: "Поточний рівень",
     goalLabel: "Мета",
@@ -129,29 +126,15 @@ export default function RecommendationPage() {
     try {
       const res = await fetch("/api/recommend", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          targetLanguage,
-          level,
-          goal,
-          mainDifficulty,
-          hoursPerWeek,
-          preferredFormat,
-          preferredLessonStyle,
-          lang,
+          name, targetLanguage, level, goal,
+          mainDifficulty, hoursPerWeek, preferredFormat, preferredLessonStyle, lang,
         }),
       });
 
       const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || t.errorDefault);
-        return;
-      }
-
+      if (!res.ok) { setError(data.error || t.errorDefault); return; }
       setResult(data.recommendation);
     } catch {
       setError(t.errorFailed);
@@ -161,73 +144,55 @@ export default function RecommendationPage() {
   }
 
   return (
-    <main
-      style={{
-        maxWidth: 820,
-        margin: "0 auto",
-        padding: "40px 16px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: 8,
-          marginBottom: 20,
-        }}
-      >
-        <button type="button" onClick={() => setLang("en")} style={langButtonStyle(lang === "en")}>
-          EN
-        </button>
-        <button type="button" onClick={() => setLang("ru")} style={langButtonStyle(lang === "ru")}>
-          RU
-        </button>
-        <button type="button" onClick={() => setLang("ua")} style={langButtonStyle(lang === "ua")}>
-          UA
-        </button>
+    <main style={{
+      maxWidth: 820,
+      margin: "0 auto",
+      padding: "40px 16px",
+      background: "#1a0f08",
+      minHeight: "100vh",
+      color: "#f0e6d3",
+      fontFamily: "'Lato', system-ui, Arial",
+    }}>
+
+      {/* Language buttons */}
+      <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginBottom: 20 }}>
+        {(["en", "ru", "ua"] as const).map(l => (
+          <button key={l} type="button" onClick={() => setLang(l)} style={langButtonStyle(lang === l)}>
+            {l.toUpperCase()}
+          </button>
+        ))}
       </div>
 
-      <h1 style={{ marginBottom: 10 }}>{t.title}</h1>
-      <p style={{ marginBottom: 24, color: "#6f5f55" }}>{t.subtitle}</p>
+      <h1 style={{ marginBottom: 10, fontFamily: "'Playfair Display', serif", color: "#f0e6d3" }}>
+        {t.title}
+      </h1>
+      <p style={{ marginBottom: 24, color: "#b89070" }}>{t.subtitle}</p>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: "grid",
-          gap: 16,
-          background: "#fff",
-          padding: 24,
-          borderRadius: 20,
-          boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
-        }}
-      >
+      {/* Form */}
+      <form onSubmit={handleSubmit} style={{
+        display: "grid", gap: 16,
+        background: "#2a1810",
+        border: "1px solid #3d2010",
+        padding: 24, borderRadius: 20,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+      }}>
         <input
           type="text"
           placeholder={t.namePlaceholder}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
           required
           style={inputStyle}
         />
 
-        <select
-          value={targetLanguage}
-          onChange={(e) => setTargetLanguage(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={targetLanguage} onChange={e => setTargetLanguage(e.target.value)} required style={inputStyle}>
           <option value="">{t.targetLanguagePlaceholder}</option>
           <option value="English">English</option>
           <option value="Polish">Polish</option>
           <option value="Czech">Czech</option>
         </select>
 
-        <select
-          value={level}
-          onChange={(e) => setLevel(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={level} onChange={e => setLevel(e.target.value)} required style={inputStyle}>
           <option value="">{t.levelPlaceholder}</option>
           <option value="A0">A0</option>
           <option value="A1">A1</option>
@@ -236,12 +201,7 @@ export default function RecommendationPage() {
           <option value="B2">B2</option>
         </select>
 
-        <select
-          value={goal}
-          onChange={(e) => setGoal(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={goal} onChange={e => setGoal(e.target.value)} required style={inputStyle}>
           <option value="">{t.goalPlaceholder}</option>
           <option value="speaking">Speaking</option>
           <option value="travel">Travel</option>
@@ -250,12 +210,7 @@ export default function RecommendationPage() {
           <option value="general improvement">General improvement</option>
         </select>
 
-        <select
-          value={mainDifficulty}
-          onChange={(e) => setMainDifficulty(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={mainDifficulty} onChange={e => setMainDifficulty(e.target.value)} required style={inputStyle}>
           <option value="">{t.difficultyPlaceholder}</option>
           <option value="I forget words">I forget words</option>
           <option value="I understand but can't speak">I understand but can't speak</option>
@@ -264,24 +219,14 @@ export default function RecommendationPage() {
           <option value="I need more structure">I need more structure</option>
         </select>
 
-        <select
-          value={hoursPerWeek}
-          onChange={(e) => setHoursPerWeek(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={hoursPerWeek} onChange={e => setHoursPerWeek(e.target.value)} required style={inputStyle}>
           <option value="">{t.hoursPlaceholder}</option>
           <option value="1-2">1-2 hours</option>
           <option value="3-4">3-4 hours</option>
           <option value="5+">5+ hours</option>
         </select>
 
-        <select
-          value={preferredFormat}
-          onChange={(e) => setPreferredFormat(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={preferredFormat} onChange={e => setPreferredFormat(e.target.value)} required style={inputStyle}>
           <option value="">{t.formatPlaceholder}</option>
           <option value="mini-group">Mini-group</option>
           <option value="individual">Individual lessons</option>
@@ -289,12 +234,7 @@ export default function RecommendationPage() {
           <option value="not sure">Not sure yet</option>
         </select>
 
-        <select
-          value={preferredLessonStyle}
-          onChange={(e) => setPreferredLessonStyle(e.target.value)}
-          required
-          style={inputStyle}
-        >
+        <select value={preferredLessonStyle} onChange={e => setPreferredLessonStyle(e.target.value)} required style={inputStyle}>
           <option value="">{t.stylePlaceholder}</option>
           <option value="Speaking focused">Speaking focused</option>
           <option value="Grammar focused">Grammar focused</option>
@@ -303,54 +243,60 @@ export default function RecommendationPage() {
           <option value="Mixed approach">Mixed approach</option>
         </select>
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: "12px 18px",
-            borderRadius: 14,
-            border: "none",
-            background: "#2f241f",
-            color: "#fff",
-            fontWeight: 700,
-            cursor: "pointer",
-          }}
-        >
+        <button type="submit" disabled={loading} style={{
+          padding: "13px 20px",
+          borderRadius: 14,
+          border: "none",
+          background: loading ? "#c9b8aa" : "#7b4f2e",
+          color: "#f5ede3",
+          fontWeight: 700,
+          cursor: loading ? "not-allowed" : "pointer",
+          fontSize: 15,
+          fontFamily: "'Lato', system-ui, Arial",
+        }}>
           {loading ? t.loading : t.submit}
         </button>
       </form>
 
-      {error && <p style={{ color: "crimson", marginTop: 20 }}>{error}</p>}
+      {error && (
+        <p style={{ color: "#f87171", marginTop: 20, fontWeight: 600 }}>{error}</p>
+      )}
 
+      {/* Result */}
       {result && (
-        <section
-          style={{
-            marginTop: 28,
-            background: "#fffaf5",
-            border: "1px solid #e5d7ca",
-            borderRadius: 20,
-            padding: 24,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
-          }}
-        >
-          <h2 style={{ marginBottom: 16 }}>{t.resultTitle}</h2>
+        <section style={{
+          marginTop: 28,
+          background: "#2a1810",
+          border: "1px solid #c9a87c",
+          borderRadius: 20,
+          padding: 24,
+          boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
+          color: "#f0e6d3",
+        }}>
+          <h2 style={{
+            marginBottom: 16,
+            fontFamily: "'Playfair Display', serif",
+            color: "#f0e6d3",
+          }}>
+            {t.resultTitle}
+          </h2>
 
-          <p>
-            <strong>{t.recommendedFormat}:</strong> {result.recommendedFormat}
-          </p>
-          <p>
-            <strong>{t.suggestedIntensity}:</strong> {result.suggestedIntensity}
-          </p>
-          <p>
-            <strong>{t.bestProduct}:</strong> {result.bestProduct}
-          </p>
-          <p>
-            <strong>{t.focusPlan}:</strong> {result.focusPlan}
-          </p>
-          <p style={{ marginTop: 18 }}>
-            <strong>{t.whyThisSuitsYou}:</strong>
+          {[
+            [t.recommendedFormat, result.recommendedFormat],
+            [t.suggestedIntensity, result.suggestedIntensity],
+            [t.bestProduct, result.bestProduct],
+            [t.focusPlan, result.focusPlan],
+          ].map(([label, value]) => (
+            <p key={label} style={{ marginBottom: 8, lineHeight: 1.6 }}>
+              <strong style={{ color: "#c9a87c" }}>{label}:</strong>{" "}
+              <span style={{ color: "#f0e6d3" }}>{value}</span>
+            </p>
+          ))}
+
+          <p style={{ marginTop: 16, lineHeight: 1.7 }}>
+            <strong style={{ color: "#c9a87c" }}>{t.whyThisSuitsYou}:</strong>
             <br />
-            {result.whyThisSuitsYou}
+            <span style={{ color: "#d4c4b0" }}>{result.whyThisSuitsYou}</span>
           </p>
         </section>
       )}
@@ -361,18 +307,22 @@ export default function RecommendationPage() {
 const inputStyle: React.CSSProperties = {
   padding: "12px 14px",
   borderRadius: 12,
-  border: "1px solid #d8c7b9",
-  background: "#fff",
+  border: "1px solid #5c3a20",
+  background: "#1a0f08",
+  color: "#f0e6d3",
+  fontSize: 14,
+  fontFamily: "'Lato', system-ui, Arial",
 };
 
 function langButtonStyle(active: boolean): React.CSSProperties {
   return {
-    padding: "8px 12px",
+    padding: "8px 14px",
     borderRadius: 10,
-    border: "1px solid #d8c7b9",
-    background: active ? "#2f241f" : "#fff",
-    color: active ? "#fff" : "#2f241f",
+    border: "1px solid #5c3a20",
+    background: active ? "#7b4f2e" : "#2a1810",
+    color: active ? "#f5ede3" : "#b89070",
     fontWeight: 700,
     cursor: "pointer",
+    fontFamily: "'Lato', system-ui, Arial",
   };
 }

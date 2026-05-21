@@ -4,7 +4,7 @@ export default function RequestPage() {
   return (
     <>
       <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@400;700&display=swap"
         rel="stylesheet"
       />
       <link rel="stylesheet" href="/landing/style.css" />
@@ -39,7 +39,7 @@ export default function RequestPage() {
         <textarea name="message" placeholder="Message" rows="4"
           style="padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--chip);color:var(--text);resize:vertical;"></textarea>
 
-        <button id="sendBtnEl" type="submit" class="control-btn" style="width:max-content;">
+        <button id="sendBtnEl" type="submit" style="width:max-content;padding:12px 20px;border-radius:14px;border:none;background:#7b4f2e;color:#f5ede3;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:'Lato',system-ui;">
           <span>🚀</span>
           <span id="sendBtn">Send</span>
         </button>
