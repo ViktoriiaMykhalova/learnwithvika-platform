@@ -229,7 +229,7 @@ export default function HomePage() {
         }
         .lwv-hero-right { position: relative; overflow: hidden; }
         .lwv-hero-photo {
-          width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
+          width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
           display: block;
         }
         .lwv-hero-overlay {
@@ -487,7 +487,7 @@ export default function HomePage() {
 
         @media(max-width:900px){
           .lwv-hero { grid-template-columns: 1fr; }
-          .lwv-hero-right { height: 70vw; min-height: 320px; }
+          .lwv-hero-right { height: 85vw; min-height: 380px; }
           .lwv-hero-right .lwv-hero-photo { object-position: top center; }
           .lwv-hero-left { padding: 40px 20px; }
           .lwv-section { padding: 52px 20px; }
