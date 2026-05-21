@@ -487,10 +487,10 @@ export default function HomePage() {
         .lwv-footer-copy { font-size: 11px; color: #9a7860; font-family: 'DM Sans', system-ui; }
 
         @media(max-width:900px){
-          .lwv-hero { grid-template-columns: 1fr; }
-          .lwv-hero-right { height: 85vw; min-height: 380px; }
-          .lwv-hero-right .lwv-hero-photo { object-position: top center; }
-          .lwv-hero-left { padding: 40px 20px; }
+          .lwv-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 75px; margin-bottom: 0; }
+          .lwv-hero-left { padding: 32px 20px 28px; order: 2; }
+          .lwv-hero-right { height: 80vw; min-height: 300px; order: 1; }
+          .lwv-hero-photo { object-position: center 25%; }
           .lwv-section { padding: 52px 20px; }
           .lwv-about-grid { grid-template-columns: 1fr; gap: 36px; }
           .lwv-for-grid { grid-template-columns: 1fr; }
