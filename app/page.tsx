@@ -482,12 +482,27 @@ export default function HomePage() {
         .lwv-footer-copy { font-size: 11px; color: #9a7860; font-family: 'DM Sans', system-ui; }
 
         @media(max-width:900px){
-          .lwv-nav { padding: 10px 16px; }
+          .lwv-nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 9999 !important;
+            padding: 10px 16px !important;
+            background: rgba(14,7,4,0.97) !important;
+            backdrop-filter: blur(20px) !important;
+          }
           .lwv-logo { font-size: 15px; }
           .lwv-nav-links { display: none; }
           .lwv-nav-langs { margin-left: 0; }
           .lwv-lang-btn { padding: 3px 9px !important; font-size: 11px !important; }
-          .lwv-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 56px; margin-bottom: 0; }
+          .lwv-hero {
+            grid-template-columns: 1fr;
+            min-height: auto;
+            padding-top: 60px;
+            margin-bottom: 0;
+          }
           .lwv-hero-right { height: 75vw; min-height: 280px; order: 1; }
           .lwv-hero-left { padding: 28px 20px 32px; order: 2; min-height: auto; }
           .lwv-hero-photo { object-position: center 20%; }
