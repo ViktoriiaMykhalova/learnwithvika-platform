@@ -170,9 +170,8 @@ export default function HomePage() {
       <style>{`
         * { box-sizing: border-box; }
 
-        .lwv-lang-bar {
-          display: none;
-        }
+        .lwv-lang-bar { display: none !important; }
+        .lwv-nav-langs { display: flex; gap: 6px; margin-left: 12px; }
         .lwv-lang-btn {
           padding: 4px 14px; border-radius: 100px; font-size: 12px; font-weight: 600;
           border: 1px solid rgba(200,133,90,0.25); background: transparent;
@@ -483,19 +482,21 @@ export default function HomePage() {
         .lwv-footer-copy { font-size: 11px; color: #9a7860; font-family: 'DM Sans', system-ui; }
 
         @media(max-width:900px){
-          .lwv-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 75px; margin-bottom: 0; }
-          .lwv-hero-left { padding: 32px 20px 28px; order: 2; }
-          .lwv-hero-right { height: 80vw; min-height: 300px; order: 1; }
-          .lwv-hero-photo { object-position: center 25%; }
+          .lwv-nav { padding: 10px 16px; }
+          .lwv-logo { font-size: 15px; }
+          .lwv-nav-links { display: none; }
+          .lwv-nav-langs { margin-left: 0; }
+          .lwv-lang-btn { padding: 3px 9px !important; font-size: 11px !important; }
+          .lwv-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 56px; margin-bottom: 0; }
+          .lwv-hero-right { height: 75vw; min-height: 280px; order: 1; }
+          .lwv-hero-left { padding: 28px 20px 32px; order: 2; min-height: auto; }
+          .lwv-hero-photo { object-position: center 20%; }
           .lwv-section { padding: 52px 20px; }
           .lwv-about-grid { grid-template-columns: 1fr; gap: 36px; }
           .lwv-for-grid { grid-template-columns: 1fr; }
           .lwv-pricing-grid { grid-template-columns: 1fr; }
           .lwv-reviews-grid { grid-template-columns: 1fr; }
-          .lwv-nav { padding: 12px 20px; top: 34px; }
-          .lwv-nav-links { display: none; }
           .lwv-footer { flex-direction: column; text-align: center; padding: 24px 20px; }
-          .lwv-lang-bar { padding: 8px 20px; }
           .lwv-cta-section { padding: 60px 20px; }
         }
       `}</style>
@@ -515,7 +516,7 @@ export default function HomePage() {
     <a onclick="document.getElementById('lwv-reviews').scrollIntoView({behavior:'smooth'})">Reviews</a>
     <a href="/placement-test" class="lwv-nav-cta" id="lwv-nav-cta">Take placement test →</a>
   </div>
-  <div style="display:flex;gap:6px;margin-left:16px;">
+  <div class="lwv-nav-langs">
     <button class="lwv-lang-btn active" data-lang="en">EN</button>
     <button class="lwv-lang-btn" data-lang="ua">UA</button>
     <button class="lwv-lang-btn" data-lang="ru">RU</button>
