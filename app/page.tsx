@@ -156,6 +156,15 @@ export default function HomePage() {
       });
     };
     document.addEventListener('click', handler);
+
+    // Theme init
+    const saved = localStorage.getItem('lwv-theme');
+    const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    const theme = saved || preferred;
+    document.documentElement.setAttribute('data-theme', theme);
+    const btn = document.getElementById('lwv-theme-btn');
+    if(btn) btn.textContent = theme==='light' ? '🌙 Dark' : '☀️ Light';
+
     return () => document.removeEventListener('click', handler);
   }, []);
 
@@ -526,7 +535,15 @@ export default function HomePage() {
           <a onClick={()=>document.getElementById('lwv-about')?.scrollIntoView({behavior:'smooth'})} style={{color:'#9a7860',fontSize:13,cursor:'pointer',textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">About</a>
           <a onClick={()=>document.getElementById('lwv-for')?.scrollIntoView({behavior:'smooth'})} style={{color:'#9a7860',fontSize:13,cursor:'pointer',textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">For who</a>
           <a onClick={()=>document.getElementById('lwv-pricing')?.scrollIntoView({behavior:'smooth'})} style={{color:'#9a7860',fontSize:13,cursor:'pointer',textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">Pricing</a>
-          <a href="/placement-test" style={{background:'#c8855a',color:'#fff',padding:'9px 20px',borderRadius:100,fontSize:13,fontWeight:600,textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">Take placement test →</a>
+          <button id="lwv-theme-btn" onClick={()=>{
+  const html = document.documentElement;
+  const isLight = html.getAttribute('data-theme')==='light';
+  const next = isLight ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('lwv-theme', next);
+  const btn = document.getElementById('lwv-theme-btn');
+  if(btn) btn.textContent = next==='light' ? '🌙 Dark' : '☀️ Light';
+}} className="lwv-nav-desktop-link" style={{background:'transparent',border:'1px solid rgba(200,133,90,0.3)',color:'#f5ede3',padding:'8px 18px',borderRadius:100,fontSize:13,cursor:'pointer',fontFamily:"'DM Sans',system-ui",fontWeight:600}}>🌙 Dark</button>
         </div>
         <div style={{display:'flex',gap:6}}>
           <button className="lwv-lang-btn active" data-lang="en" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>EN</button>
