@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const LWV_T = {
   en: {
@@ -141,6 +141,31 @@ const LWV_T = {
 
 export default function HomePage() {
 
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+useEffect(() => {
+  const saved = localStorage.getItem("lwv-theme") as "dark" | "light" | null;
+
+  const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
+
+  const initial = saved || preferred;
+
+  setTheme(initial);
+  document.documentElement.setAttribute("data-theme", initial);
+}, []);
+
+const toggleTheme = () => {
+  const next = theme === "dark" ? "light" : "dark";
+
+  setTheme(next);
+
+  document.documentElement.setAttribute("data-theme", next);
+
+  localStorage.setItem("lwv-theme", next);
+};
+
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const btn = (e.target as Element).closest('.lwv-lang-btn') as HTMLElement | null;
@@ -156,14 +181,7 @@ export default function HomePage() {
       });
     };
     document.addEventListener('click', handler);
-
-    // Theme init
-    const saved = localStorage.getItem('lwv-theme');
-    const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    const theme = saved || preferred;
-    document.documentElement.setAttribute('data-theme', theme);
-    const btn = document.getElementById('lwv-theme-btn');
-    if(btn) btn.textContent = theme==='light' ? '☀️' : '🌙';
+    
 
     return () => document.removeEventListener('click', handler);
   }, []);
@@ -545,7 +563,14 @@ export default function HomePage() {
   if(btn) btn.textContent = next==='light' ? '🌙 Dark' : '☀️ Light';
 }} className="lwv-nav-desktop-link" style={{background:'transparent',border:'1px solid rgba(200,133,90,0.3)',color:'#f5ede3',padding:'8px 18px',borderRadius:100,fontSize:13,cursor:'pointer',fontFamily:"'DM Sans',system-ui",fontWeight:600}}>🌙 Dark</button>
         </div>
-        <div style={{display:'flex',gap:6,alignItems:'center'}}>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+  <button
+    id="lwv-theme-btn"
+    onClick={toggleTheme}
+    className="lwv-theme-btn"
+  >
+    {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+  </button>
           // Theme init
     const saved = localStorage.getItem('lwv-theme');
     const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
