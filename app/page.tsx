@@ -6,7 +6,7 @@ const LWV_T = {
     'lwv-eyebrow': 'LearnWithVika · AI-Powered English',
     'lwv-hero-title': 'Learn English<br><em>the smart way</em>',
     'lwv-hero-desc': '<strong>Viktoriia Mykhalova</strong> — English tutor, Software Engineering student, CEO of SOLVION educational direction, and founder of the LearnWithVika AI-powered learning platform.<br><br>1.5+ years of teaching focused on speaking, practical grammar, AI-assisted learning, and modern interactive education for <strong>A1–B2 students</strong>.',
-    'lwv-cta1': '✦ Take placement test', 'lwv-cta2': 'Book free trial',
+    'lwv-cta1': '✦ Take placement test', 'lwv-cta2': '🎯 Book your free lesson',
     'lwv-s1': 'Levels covered', 'lwv-s2': 'AI platform', 'lwv-s3': 'Languages spoken',
     'lwv-nav-cta': 'Take placement test →',
     'lwv-badge-role': 'English Tutor · SOLVION CEO · LearnWithVika Founder',
@@ -51,7 +51,7 @@ const LWV_T = {
     'lwv-eyebrow': 'LearnWithVika · AI-навчання англійської',
     'lwv-hero-title': 'Вчи англійську<br><em>по-сучасному</em>',
     'lwv-hero-desc': '<strong>Вікторія Михальова</strong> — репетитор англійської, студентка Software Engineering, CEO освітнього напряму SOLVION та засновниця AI-платформи LearnWithVika.<br><br>1.5+ роки навчання: speaking, граматика, AI-асистент, сучасна інтерактивна освіта для студентів рівнів <strong>A1–B2</strong>.',
-    'lwv-cta1': '✦ Пройти тест рівня', 'lwv-cta2': 'Записатись на пробне',
+    'lwv-cta1': '✦ Пройти тест рівня', 'lwv-cta2': '🎯 Записатись на пробне  безкоштовне заняття',
     'lwv-s1': 'Рівні навчання', 'lwv-s2': 'AI платформа', 'lwv-s3': 'Мов знаю',
     'lwv-nav-cta': 'Пройти тест рівня →',
     'lwv-badge-role': 'Репетитор · CEO SOLVION · Засновниця LearnWithVika',
@@ -96,7 +96,7 @@ const LWV_T = {
     'lwv-eyebrow': 'LearnWithVika · AI-обучение английскому',
     'lwv-hero-title': 'Учи английский<br><em>по-современному</em>',
     'lwv-hero-desc': '<strong>Виктория Михальова</strong> — репетитор английского, студентка Software Engineering, CEO образовательного направления SOLVION и основательница AI-платформы LearnWithVika.<br><br>1.5+ лет обучения: speaking, грамматика, AI-ассистент, современное интерактивное обучение для студентов уровней <strong>A1–B2</strong>.',
-    'lwv-cta1': '✦ Пройти тест уровня', 'lwv-cta2': 'Записаться на пробное',
+    'lwv-cta1': '✦ Пройти тест уровня', 'lwv-cta2': '🎯 Записаться пробный бесплатный урок',
     'lwv-s1': 'Уровни обучения', 'lwv-s2': 'AI платформа', 'lwv-s3': 'Языков знаю',
     'lwv-nav-cta': 'Пройти тест →',
     'lwv-badge-role': 'Репетитор · CEO SOLVION · Основательница LearnWithVika',
@@ -539,7 +539,7 @@ export default function HomePage() {
     </p>
     <div class="lwv-ctas">
       <a href="/placement-test" class="lwv-btn-primary" id="lwv-cta1">✦ Take placement test</a>
-      <a href="/request" class="lwv-btn-secondary" id="lwv-cta2">Book free trial</a>
+      <a href="/request" class="lwv-btn-secondary" id="lwv-cta2">🎯 Book your free lesson</a>
     </div>
     <div class="lwv-stats">
       <div class="lwv-stat"><div class="lwv-stat-num">A1–B2</div><div class="lwv-stat-label" id="lwv-s1">Levels covered</div></div>

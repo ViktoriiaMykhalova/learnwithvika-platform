@@ -252,6 +252,7 @@ export default function PlacementTestPage() {
       <aside style={{
         position: "fixed", top: 0, left: 0, height: "100vh",
         width: sidebarOpen ? 200 : 44,
+        overflowY: "auto",
         background: C.sidebar, color: "#fff",
         padding: sidebarOpen ? "24px 16px" : "24px 10px",
         transition: "0.3s", zIndex: 1000, overflow: "hidden",
@@ -282,7 +283,7 @@ export default function PlacementTestPage() {
       </aside>
 
       {/* ── Main content ── */}
-      <div style={{ marginLeft: sidebarOpen ? 280 : 92, padding: "40px 24px", transition: "0.3s" }}>
+      <div style={{ marginLeft: sidebarOpen ? 210 : 54, padding: "16px 12px", transition: "0.3s" }}>
 
         <header style={{ maxWidth: 980, margin: "0 auto 28px" }}>
           <h1 style={{ marginBottom: 8, fontFamily: "'Playfair Display', serif", color: C.pageText }}>English Placement Test</h1>
