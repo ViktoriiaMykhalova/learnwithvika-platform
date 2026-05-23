@@ -171,7 +171,7 @@ export default function HomePage() {
         * { box-sizing: border-box; }
 
         .lwv-lang-bar {
-          position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+          position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
           display: flex; gap: 8px; justify-content: flex-end;
           padding: 9px 32px;
           background: rgba(14,7,4,0.95);
@@ -188,7 +188,7 @@ export default function HomePage() {
         }
 
         .lwv-nav {
-          position: fixed; top: 36px; left: 0; right: 0; z-index: 200;
+          position: fixed; top: 36px; left: 0; right: 0; z-index: 9999;
           padding: 13px 40px; display: flex; align-items: center; justify-content: space-between;
           background: rgba(14,7,4,0.92); backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(200,133,90,0.12);
