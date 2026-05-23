@@ -163,7 +163,7 @@ export default function HomePage() {
     const theme = saved || preferred;
     document.documentElement.setAttribute('data-theme', theme);
     const btn = document.getElementById('lwv-theme-btn');
-    if(btn) btn.textContent = theme==='light' ? '🌙 Dark' : '☀️ Light';
+    if(btn) btn.textContent = theme==='light' ? '☀️' : '🌙';
 
     return () => document.removeEventListener('click', handler);
   }, []);
@@ -545,7 +545,8 @@ export default function HomePage() {
   if(btn) btn.textContent = next==='light' ? '🌙 Dark' : '☀️ Light';
 }} className="lwv-nav-desktop-link" style={{background:'transparent',border:'1px solid rgba(200,133,90,0.3)',color:'#f5ede3',padding:'8px 18px',borderRadius:100,fontSize:13,cursor:'pointer',fontFamily:"'DM Sans',system-ui",fontWeight:600}}>🌙 Dark</button>
         </div>
-        <div style={{display:'flex',gap:6}}>
+        <div style={{display:'flex',gap:6,alignItems:'center'}}>
+          <button id="lwv-theme-btn" onClick={()=>{const html=document.documentElement;const isLight=html.getAttribute('data-theme')==='light';const next=isLight?'dark':'light';html.setAttribute('data-theme',next);localStorage.setItem('lwv-theme',next);const b=document.getElementById('lwv-theme-btn');if(b)b.textContent=next==='light'?'☀️':'🌙';}} style={{background:'transparent',border:'1px solid rgba(200,133,90,0.3)',color:'#f5ede3',padding:'5px 9px',borderRadius:100,fontSize:15,cursor:'pointer',lineHeight:1,marginRight:4}}>🌙</button>
           <button className="lwv-lang-btn active" data-lang="en" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>EN</button>
           <button className="lwv-lang-btn" data-lang="ua" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>UA</button>
           <button className="lwv-lang-btn" data-lang="ru" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>RU</button>
