@@ -183,8 +183,8 @@ export default function HomePage() {
         }
 
         .lwv-nav {
-          position: fixed; top: 36px; left: 0; right: 0; z-index: 9999;
-          padding: 13px 40px; display: flex; align-items: center; justify-content: space-between;
+          position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+          padding: 12px 32px; display: flex; align-items: center; justify-content: space-between;
           background: rgba(14,7,4,0.92); backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(200,133,90,0.12);
         }
@@ -209,7 +209,7 @@ export default function HomePage() {
 
         .lwv-hero {
           min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
-          padding-top: 60px; overflow: hidden;
+          padding-top: 64px; overflow: hidden;
           background: #0e0704;
           margin-bottom: -4px;
         }
