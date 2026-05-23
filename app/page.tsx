@@ -171,11 +171,7 @@ export default function HomePage() {
         * { box-sizing: border-box; }
 
         .lwv-lang-bar {
-          position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
-          display: flex; gap: 8px; justify-content: flex-end;
-          padding: 9px 32px;
-          background: rgba(14,7,4,0.95);
-          border-bottom: 1px solid rgba(200,133,90,0.1);
+          display: none;
         }
         .lwv-lang-btn {
           padding: 4px 14px; border-radius: 100px; font-size: 12px; font-weight: 600;
@@ -214,7 +210,7 @@ export default function HomePage() {
 
         .lwv-hero {
           min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
-          padding-top: 90px; overflow: hidden;
+          padding-top: 60px; overflow: hidden;
           background: #0e0704;
           margin-bottom: -4px;
         }
@@ -508,11 +504,6 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{
           __html: `
 <!-- LANG BAR -->
-<div class="lwv-lang-bar">
-  <button class="lwv-lang-btn active" data-lang="en">EN</button>
-  <button class="lwv-lang-btn" data-lang="ua">UA</button>
-  <button class="lwv-lang-btn" data-lang="ru">RU</button>
-</div>
 
 <!-- NAV -->
 <nav class="lwv-nav">
@@ -523,6 +514,11 @@ export default function HomePage() {
     <a onclick="document.getElementById('lwv-pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
     <a onclick="document.getElementById('lwv-reviews').scrollIntoView({behavior:'smooth'})">Reviews</a>
     <a href="/placement-test" class="lwv-nav-cta" id="lwv-nav-cta">Take placement test →</a>
+  </div>
+  <div style="display:flex;gap:6px;margin-left:16px;">
+    <button class="lwv-lang-btn active" data-lang="en">EN</button>
+    <button class="lwv-lang-btn" data-lang="ua">UA</button>
+    <button class="lwv-lang-btn" data-lang="ru">RU</button>
   </div>
 </nav>
 
