@@ -514,29 +514,31 @@ export default function HomePage() {
           .lwv-footer { flex-direction: column; text-align: center; padding: 24px 20px; }
           .lwv-cta-section { padding: 60px 20px; }
         }
+        .lwv-nav-desktop-link { display: inline-flex !important; }
+        @media(max-width:900px){ .lwv-nav-desktop-link { display: none !important; } }
       `}</style>
+
+      <nav className="lwv-nav" style={{position:'fixed',top:0,left:0,right:0,zIndex:99999,padding:'12px 32px',display:'flex',alignItems:'center',justifyContent:'space-between',background:'#0e0704',borderBottom:'1px solid rgba(200,133,90,0.12)'}}>
+        <a href="/" className="lwv-logo" style={{fontFamily:"'Playfair Display',serif",fontSize:19,fontWeight:700,color:'#f5ede3',textDecoration:'none'}}>
+          Learn<span style={{color:'#c8855a'}}>With</span>Vika
+        </a>
+        <div style={{display:'flex',gap:24,alignItems:'center'}}>
+          <a onClick={()=>document.getElementById('lwv-about')?.scrollIntoView({behavior:'smooth'})} style={{color:'#9a7860',fontSize:13,cursor:'pointer',textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">About</a>
+          <a onClick={()=>document.getElementById('lwv-for')?.scrollIntoView({behavior:'smooth'})} style={{color:'#9a7860',fontSize:13,cursor:'pointer',textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">For who</a>
+          <a onClick={()=>document.getElementById('lwv-pricing')?.scrollIntoView({behavior:'smooth'})} style={{color:'#9a7860',fontSize:13,cursor:'pointer',textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">Pricing</a>
+          <a href="/placement-test" style={{background:'#c8855a',color:'#fff',padding:'9px 20px',borderRadius:100,fontSize:13,fontWeight:600,textDecoration:'none',fontFamily:"'DM Sans',system-ui"}} className="lwv-nav-desktop-link">Take placement test →</a>
+        </div>
+        <div style={{display:'flex',gap:6}}>
+          <button className="lwv-lang-btn active" data-lang="en" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>EN</button>
+          <button className="lwv-lang-btn" data-lang="ua" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>UA</button>
+          <button className="lwv-lang-btn" data-lang="ru" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>RU</button>
+        </div>
+      </nav>
 
       <div
         dangerouslySetInnerHTML={{
           __html: `
 <!-- LANG BAR -->
-
-<!-- NAV -->
-<nav class="lwv-nav">
-  <a href="/" class="lwv-logo">Learn<span>With</span>Vika</a>
-  <div class="lwv-nav-links">
-    <a onclick="document.getElementById('lwv-about').scrollIntoView({behavior:'smooth'})">About</a>
-    <a onclick="document.getElementById('lwv-for').scrollIntoView({behavior:'smooth'})">For who</a>
-    <a onclick="document.getElementById('lwv-pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
-    <a onclick="document.getElementById('lwv-reviews').scrollIntoView({behavior:'smooth'})">Reviews</a>
-    <a href="/placement-test" class="lwv-nav-cta" id="lwv-nav-cta">Take placement test →</a>
-  </div>
-  <div class="lwv-nav-langs">
-    <button class="lwv-lang-btn active" data-lang="en">EN</button>
-    <button class="lwv-lang-btn" data-lang="ua">UA</button>
-    <button class="lwv-lang-btn" data-lang="ru">RU</button>
-  </div>
-</nav>
 
 <!-- HERO -->
 <section class="lwv-hero">
