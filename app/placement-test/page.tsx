@@ -251,7 +251,7 @@ export default function PlacementTestPage() {
       {/* ── Sidebar ── */}
       <aside style={{
         position: "fixed", top: 0, left: 0, height: "100vh",
-        width: sidebarOpen ? 260 : 72,
+        width: sidebarOpen ? 200 : 44,
         background: C.sidebar, color: "#fff",
         padding: sidebarOpen ? "24px 16px" : "24px 10px",
         transition: "0.3s", zIndex: 1000, overflow: "hidden",

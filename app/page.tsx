@@ -581,9 +581,14 @@ export default function HomePage() {
           <span class="lwv-tag">💄 Beauty Industry</span>
           <span class="lwv-tag">👥 Mini-groups</span>
         </div>
+        <p style="font-size:12px;color:#c8855a;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-top:20px;margin-bottom:8px;">I speak</p>
         <div class="lwv-langs">
-          <span class="lwv-lang">EN</span><span class="lwv-lang">UA</span><span class="lwv-lang">RU</span>
-          <span class="lwv-lang">PL</span><span class="lwv-lang">CZ</span><span class="lwv-lang">SK</span>
+          <span class="lwv-lang">🇬🇧 English</span>
+          <span class="lwv-lang">🇺🇦 Ukrainian</span>
+          <span class="lwv-lang">🇷🇺 Russian</span>
+          <span class="lwv-lang">🇵🇱 Polish</span>
+          <span class="lwv-lang">🇨🇿 Czech</span>
+          <span class="lwv-lang">🇸🇰 Slovak</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
           <a href="https://t.me/englishwith_viky" target="_blank" class="lwv-btn-secondary" style="font-size:13px;padding:11px 20px">✈️ Telegram</a>
