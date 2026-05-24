@@ -145,16 +145,12 @@ export default function HomePage() {
 
 useEffect(() => {
   const saved = localStorage.getItem("lwv-theme") as "dark" | "light" | null;
-
-  const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
-
+  const preferred = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   const initial = saved || preferred;
-
   setTheme(initial);
   document.documentElement.setAttribute("data-theme", initial);
 }, []);
+
 
 const toggleTheme = () => {
   const next = theme === "dark" ? "light" : "dark";
