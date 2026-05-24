@@ -461,3 +461,15 @@ h1, h2, h3 {
   color: #2c1a0e !important;
   opacity: 0.15 !important;
 }
+
+:root[data-theme="light"] .lwv-cta-section {
+  background: linear-gradient(135deg, #ede4d3, #f5f0e8) !important;
+}
+
+:root[data-theme="light"] .lwv-cta-section * {
+  color: #2c1a0e !important;
+}
+
+:root[data-theme="light"] .lwv-cta-title em {
+  color: #8b5e3c !important;
+}
