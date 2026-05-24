@@ -439,3 +439,9 @@ h1, h2, h3 {
   color: #2c1a0e !important;
   border-color: rgba(139,94,60,0.4) !important;
 }
+
+:root[data-theme="light"] .lwv-hero-desc strong,
+:root[data-theme="light"] .lwv-about-text p strong,
+:root[data-theme="light"] .lwv-hero-desc strong { 
+  color: #2c1a0e !important; 
+}
