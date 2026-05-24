@@ -451,3 +451,13 @@ h1, h2, h3 {
 :root[data-theme="light"] .lwv-cta-sub {
   color: #2c1a0e !important;
 }
+
+:root[data-theme="light"] .lwv-cta-section h2,
+:root[data-theme="light"] .lwv-cta-section .lwv-cta-title {
+  color: #2c1a0e !important;
+}
+
+:root[data-theme="light"] .lwv-cta-section .lwv-watermark-text {
+  color: #2c1a0e !important;
+  opacity: 0.15 !important;
+}
