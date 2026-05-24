@@ -391,3 +391,41 @@ h1, h2, h3 {
 
 
 }
+
+/* ── LearnWithVika light theme overrides ── */
+:root[data-theme="light"] .lwv-nav,
+:root[data-theme="light"] .lwv-hero,
+:root[data-theme="light"] .lwv-hero-left { background: #f5f0e8 !important; }
+
+:root[data-theme="light"] .lwv-about,
+:root[data-theme="light"] .lwv-pricing,
+:root[data-theme="light"] .lwv-footer { background: #ede4d3 !important; }
+
+:root[data-theme="light"] .lwv-for,
+:root[data-theme="light"] .lwv-reviews,
+:root[data-theme="light"] .lwv-cta-section { background: #f5f0e8 !important; }
+
+:root[data-theme="light"] .lwv-hero-title,
+:root[data-theme="light"] .lwv-section-title,
+:root[data-theme="light"] .lwv-stat-num,
+:root[data-theme="light"] .lwv-price-amount,
+:root[data-theme="light"] .lwv-footer-logo,
+:root[data-theme="light"] .lwv-review-text,
+:root[data-theme="light"] .lwv-for-title,
+:root[data-theme="light"] .lwv-price-name,
+:root[data-theme="light"] .lwv-cta-title,
+:root[data-theme="light"] .lwv-about-badge-name,
+:root[data-theme="light"] .lwv-review-name { color: #2c1a0e !important; }
+
+:root[data-theme="light"] .lwv-for-card,
+:root[data-theme="light"] .lwv-price-card,
+:root[data-theme="light"] .lwv-review-card { background: #ffffff !important; border-color: rgba(139,94,60,0.2) !important; }
+
+:root[data-theme="light"] .lwv-hero-overlay { background: linear-gradient(90deg, #f5f0e8 0%, transparent 25%, transparent 75%, rgba(245,240,232,0.4) 100%) !important; }
+
+:root[data-theme="light"] .lwv-logo,
+:root[data-theme="light"] .lwv-footer-logo { color: #2c1a0e !important; }
+
+:root[data-theme="light"] .lwv-btn-secondary { color: #2c1a0e !important; border-color: rgba(139,94,60,0.4) !important; }
+
+:root[data-theme="light"] .lwv-about-badge { background: rgba(245,240,232,0.95) !important; }
