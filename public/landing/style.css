@@ -429,3 +429,13 @@ h1, h2, h3 {
 :root[data-theme="light"] .lwv-btn-secondary { color: #2c1a0e !important; border-color: rgba(139,94,60,0.4) !important; }
 
 :root[data-theme="light"] .lwv-about-badge { background: rgba(245,240,232,0.95) !important; }
+
+:root[data-theme="light"] .lwv-nav-desktop-link {
+  color: #2c1a0e !important;
+}
+
+:root[data-theme="light"] #lwv-theme-btn,
+:root[data-theme="light"] button.lwv-nav-desktop-link {
+  color: #2c1a0e !important;
+  border-color: rgba(139,94,60,0.4) !important;
+}
