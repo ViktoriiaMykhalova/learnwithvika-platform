@@ -473,3 +473,10 @@ h1, h2, h3 {
 :root[data-theme="light"] .lwv-cta-title em {
   color: #8b5e3c !important;
 }
+
+:root[data-theme="light"] .lwv-cta-section h2,
+:root[data-theme="light"] .lwv-cta-section h2 em,
+:root[data-theme="light"] .lwv-cta-section p,
+:root[data-theme="light"] .lwv-cta-section a {
+  color: #2c1a0e !important;
+}
