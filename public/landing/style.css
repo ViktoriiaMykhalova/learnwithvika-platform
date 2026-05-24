@@ -445,3 +445,9 @@ h1, h2, h3 {
 :root[data-theme="light"] .lwv-hero-desc strong { 
   color: #2c1a0e !important; 
 }
+
+:root[data-theme="light"] .lwv-cta-section p,
+:root[data-theme="light"] .lwv-cta-title,
+:root[data-theme="light"] .lwv-cta-sub {
+  color: #2c1a0e !important;
+}
