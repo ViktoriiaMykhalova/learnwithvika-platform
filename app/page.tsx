@@ -478,7 +478,9 @@ const toggleTheme = () => {
           font-family: 'Playfair Display', serif;
           font-size: clamp(30px, 5vw, 56px); font-weight: 700;
           line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; color: #f5ede3;
+          transition: color 0.3s;
         }
+        :root[data-theme="light"] .lwv-cta-title { color: #2c1a0e !important; }
         .lwv-cta-title em { font-style: italic; color: #e8a87c; }
         .lwv-cta-sub {
           font-size: 16px; color: #9a7860; margin-bottom: 32px; font-weight: 300;
