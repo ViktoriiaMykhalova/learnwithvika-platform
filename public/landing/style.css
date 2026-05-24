@@ -469,6 +469,7 @@ h1, h2, h3 {
 :root[data-theme="light"] .lwv-cta-section * {
   color: #2c1a0e !important;
 }
+
 html[data-theme="light"] .lwv-cta-section,
 html[data-theme="light"] .lwv-cta-section h2,
 html[data-theme="light"] .lwv-cta-section .lwv-cta-title,
