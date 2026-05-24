@@ -577,7 +577,6 @@ const toggleTheme = () => {
 <!-- HERO -->
 <section class="lwv-hero">
   <div class="lwv-hero-left">
-    <div class="lwv-eyebrow" id="lwv-eyebrow">LearnWithVika · AI-Powered English</div>
     <h1 class="lwv-hero-title" id="lwv-hero-title">Learn English<br><em>the smart way</em></h1>
     <p class="lwv-hero-desc" id="lwv-hero-desc">
       <strong>Viktoriia Mykhalova</strong> — English tutor, Software Engineering student,
