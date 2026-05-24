@@ -560,6 +560,9 @@ const toggleTheme = () => {
 }} className="lwv-nav-desktop-link" style={{background:'transparent',border:'1px solid rgba(200,133,90,0.3)',color:'#f5ede3',padding:'8px 18px',borderRadius:100,fontSize:13,cursor:'pointer',fontFamily:"'DM Sans',system-ui",fontWeight:600}}>🌙 Dark</button>
         </div>
         <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          <button onClick={toggleTheme} style={{background:'transparent',border:'1px solid rgba(200,133,90,0.3)',color:'#f5ede3',padding:'4px 10px',borderRadius:100,fontSize:14,cursor:'pointer',lineHeight:1}}>
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
           <button className="lwv-lang-btn active" data-lang="en" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>EN</button>
           <button className="lwv-lang-btn" data-lang="ua" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>UA</button>
           <button className="lwv-lang-btn" data-lang="ru" style={{padding:'4px 12px',borderRadius:100,fontSize:12,fontWeight:600,border:'1px solid rgba(200,133,90,0.25)',background:'transparent',color:'#9a7860',cursor:'pointer',fontFamily:"'DM Sans',system-ui"}}>RU</button>
