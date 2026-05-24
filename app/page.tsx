@@ -584,9 +584,14 @@ const toggleTheme = () => {
       1.5+ years of teaching focused on speaking, practical grammar, AI-assisted learning,
       and modern interactive education for <strong>A1–B2 students</strong>.
     </p>
-    <div class="lwv-ctas">
-      <a href="/placement-test" class="lwv-btn-primary" id="lwv-cta1">✦ Take placement test</a>
-      <a href="/request" class="lwv-btn-secondary" id="lwv-cta2">🎯 Book your free lesson</a>
+    <div style="margin-bottom:32px;position:relative;z-index:1">
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.2;color:#f5ede3;margin-bottom:8px">Ready to start?<br><em style="color:#c8855a;font-style:italic">Book your first free lesson</em></p>
+      <p style="font-size:14px;color:#9a7860;margin-bottom:20px;font-family:'DM Sans',system-ui">Sign up now for your first free lesson with Viktoriia</p>
+      <div class="lwv-ctas" style="margin-bottom:14px">
+        <a href="/request" class="lwv-btn-primary" id="lwv-cta2">🎯 Book free lesson</a>
+      </div>
+      <p style="font-size:13px;color:#9a7860;margin-bottom:12px;font-family:'DM Sans',system-ui">Or find out your English level right now:</p>
+      <a href="/placement-test" class="lwv-btn-secondary" id="lwv-cta1" style="display:inline-flex">✦ Take placement test</a>
     </div>
     <div class="lwv-stats">
       <div class="lwv-stat"><div class="lwv-stat-num">A1–B2</div><div class="lwv-stat-label" id="lwv-s1">Levels covered</div></div>
@@ -638,8 +643,8 @@ const toggleTheme = () => {
           <span class="lwv-lang">🇸🇰 Slovak</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
-          <a href="https://t.me/englishwith_viky" target="_blank" class="lwv-btn-secondary" style="font-size:13px;padding:11px 20px">✈️ Telegram</a>
-          <a href="/request" class="lwv-btn-primary" style="font-size:13px;padding:11px 20px" id="lwv-about-cta">📝 Book free trial</a>
+          <a href="https://t.me/englishwith_viky" target="_blank" class="lwv-btn-secondary" style="font-size:13px;padding:11px 20px">✈️ Contact me on Telegram</a>
+          <a href="/request" class="lwv-btn-primary" style="font-size:13px;padding:11px 20px" id="lwv-about-cta">📝 Book your free lesson</a>
         </div>
       </div>
     </div>
