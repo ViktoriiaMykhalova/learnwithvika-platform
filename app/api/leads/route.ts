@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import sql from "@/lib/db";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 function asString(v: unknown) {
   return typeof v === "string" ? v : "";
@@ -55,6 +58,20 @@ export async function POST(req: Request) {
       VALUES (${name}, ${email}, ${level}, ${message})
       RETURNING id
     `;
+
+    // Отправка email уведомления
+    await resend.emails.send({
+      from: "LearnWithVika <onboarding@resend.dev>",
+      to: process.env.NOTIFY_EMAIL!,
+      subject: "Новая заявка с сайта LearnWithVika",
+      html: `
+        <h2>Новая заявка!</h2>
+        <p><strong>Имя:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Уровень:</strong> ${level || "не указан"}</p>
+        <p><strong>Сообщение:</strong> ${message || "не указано"}</p>
+      `,
+    });
 
     return NextResponse.json({ ok: true, id: result[0].id });
   } catch (e: any) {
