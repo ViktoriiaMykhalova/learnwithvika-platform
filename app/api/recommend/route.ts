@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import db from "@/lib/db";
+import sql from "@/lib/db";
 
 type Lang = "en" | "ru" | "ua";
 
@@ -34,18 +34,10 @@ function buildRecommendation(
 
   if (hoursPerWeek === "1-2") {
     suggestedIntensity =
-      lang === "ru"
-        ? "1–2 раза в неделю"
-        : lang === "ua"
-        ? "1–2 рази на тиждень"
-        : "1–2 times a week";
+      lang === "ru" ? "1–2 раза в неделю" : lang === "ua" ? "1–2 рази на тиждень" : "1–2 times a week";
   } else if (hoursPerWeek === "3-4") {
     suggestedIntensity =
-      lang === "ru"
-        ? "2–3 раза в неделю"
-        : lang === "ua"
-        ? "2–3 рази на тиждень"
-        : "2–3 times a week";
+      lang === "ru" ? "2–3 раза в неделю" : lang === "ua" ? "2–3 рази на тиждень" : "2–3 times a week";
   } else {
     suggestedIntensity =
       lang === "ru"
@@ -57,11 +49,7 @@ function buildRecommendation(
 
   if (formatLower.includes("individual")) {
     recommendedFormat =
-      lang === "ru"
-        ? "Индивидуальные занятия"
-        : lang === "ua"
-        ? "Індивідуальні заняття"
-        : "Individual lessons";
+      lang === "ru" ? "Индивидуальные занятия" : lang === "ua" ? "Індивідуальні заняття" : "Individual lessons";
   } else if (formatLower.includes("digital")) {
     recommendedFormat =
       lang === "ru"
@@ -71,24 +59,12 @@ function buildRecommendation(
         : "Digital product + self-study";
   } else if (formatLower.includes("group")) {
     recommendedFormat =
-      lang === "ru"
-        ? `Мини-группа ${level}`
-        : lang === "ua"
-        ? `Міні-група ${level}`
-        : `Mini-group ${level}`;
+      lang === "ru" ? `Мини-группа ${level}` : lang === "ua" ? `Міні-група ${level}` : `Mini-group ${level}`;
   } else {
     recommendedFormat =
       levelLower.includes("b1") || levelLower.includes("b2")
-        ? lang === "ru"
-          ? `Мини-группа ${level}`
-          : lang === "ua"
-          ? `Міні-група ${level}`
-          : `Mini-group ${level}`
-        : lang === "ru"
-        ? "Гибкий формат обучения"
-        : lang === "ua"
-        ? "Гнучкий формат навчання"
-        : "Flexible learning format";
+        ? lang === "ru" ? `Мини-группа ${level}` : lang === "ua" ? `Міні-група ${level}` : `Mini-group ${level}`
+        : lang === "ru" ? "Гибкий формат обучения" : lang === "ua" ? "Гнучкий формат навчання" : "Flexible learning format";
   }
 
   if (languageLower.includes("english")) {
@@ -153,111 +129,53 @@ function buildRecommendation(
       ? `Ця рекомендація підходить вам, тому що ви обрали мову ${targetLanguage}, рівень ${level}, мету "${goal}" та вказали основну складність: "${mainDifficulty}". Система враховує ваш доступний темп навчання (${hoursPerWeek} годин на тиждень), бажаний формат "${preferredFormat}" і стиль занять "${preferredLessonStyle}".`
       : `This recommendation suits you because you selected ${targetLanguage}, ${level} level, "${goal}" as your goal and "${mainDifficulty}" as your main difficulty. The system also considers your available study time (${hoursPerWeek} hours per week), preferred format "${preferredFormat}" and lesson style "${preferredLessonStyle}".`;
 
-  return {
-    recommendedFormat,
-    suggestedIntensity,
-    bestProduct,
-    focusPlan,
-    whyThisSuitsYou,
-  };
+  return { recommendedFormat, suggestedIntensity, bestProduct, focusPlan, whyThisSuitsYou };
 }
+
+export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
     const {
-      name,
-      targetLanguage,
-      level,
-      goal,
-      mainDifficulty,
-      hoursPerWeek,
-      preferredFormat,
-      preferredLessonStyle,
-      lang = "en",
+      name, targetLanguage, level, goal, mainDifficulty,
+      hoursPerWeek, preferredFormat, preferredLessonStyle, lang = "en",
     } = body;
 
-    if (
-      !name ||
-      !targetLanguage ||
-      !level ||
-      !goal ||
-      !mainDifficulty ||
-      !hoursPerWeek ||
-      !preferredFormat ||
-      !preferredLessonStyle
-    ) {
-      return NextResponse.json(
-        { ok: false, error: "All fields are required" },
-        { status: 400 }
-      );
+    if (!name || !targetLanguage || !level || !goal || !mainDifficulty || !hoursPerWeek || !preferredFormat || !preferredLessonStyle) {
+      return NextResponse.json({ ok: false, error: "All fields are required" }, { status: 400 });
     }
 
     const recommendation = buildRecommendation(
-      targetLanguage,
-      level,
-      goal,
-      mainDifficulty,
-      hoursPerWeek,
-      preferredFormat,
-      preferredLessonStyle,
-      lang
+      targetLanguage, level, goal, mainDifficulty,
+      hoursPerWeek, preferredFormat, preferredLessonStyle, lang
     );
 
-    db.prepare(`
+    await sql`
       INSERT INTO recommendations (
-        name,
-        level,
-        goal,
-        hours_per_week,
-        preferred_format,
-        recommended_format,
-        suggested_intensity,
-        best_product,
-        focus_plan
+        name, level, goal, hours_per_week, preferred_format,
+        recommended_format, suggested_intensity, best_product, focus_plan
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).run(
-      name,
-      level,
-      goal,
-      hoursPerWeek,
-      preferredFormat,
-      recommendation.recommendedFormat,
-      recommendation.suggestedIntensity,
-      recommendation.bestProduct,
-      recommendation.focusPlan
-    );
+      VALUES (
+        ${name}, ${level}, ${goal}, ${hoursPerWeek}, ${preferredFormat},
+        ${recommendation.recommendedFormat}, ${recommendation.suggestedIntensity},
+        ${recommendation.bestProduct}, ${recommendation.focusPlan}
+      )
+    `;
 
-    return NextResponse.json({
-      ok: true,
-      recommendation,
-    });
+    return NextResponse.json({ ok: true, recommendation });
   } catch (error) {
     console.error("POST /api/recommend error:", error);
-    return NextResponse.json(
-      { ok: false, error: "Server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: false, error: "Server error" }, { status: 500 });
   }
 }
 
 export async function GET() {
   try {
-    const rows = db
-      .prepare("SELECT * FROM recommendations ORDER BY id DESC")
-      .all();
-
-    return NextResponse.json({
-      ok: true,
-      recommendations: rows,
-    });
+    const rows = await sql`SELECT * FROM recommendations ORDER BY id DESC`;
+    return NextResponse.json({ ok: true, recommendations: rows });
   } catch (error) {
     console.error("GET /api/recommend error:", error);
-    return NextResponse.json(
-      { ok: false, error: "Server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: false, error: "Server error" }, { status: 500 });
   }
 }

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import db from "@/lib/db";
+import sql from "@/lib/db";
+
+export const runtime = "nodejs";
 
 export async function POST(req: Request) {
   try {
@@ -13,10 +15,10 @@ export async function POST(req: Request) {
       );
     }
 
-    db.prepare(`
+    await sql`
       INSERT INTO orders (name, email, product, price)
-      VALUES (?, ?, ?, ?)
-    `).run(name, email, product, price);
+      VALUES (${name}, ${email}, ${product}, ${price})
+    `;
 
     return NextResponse.json({ ok: true });
   } catch (error) {
@@ -30,7 +32,7 @@ export async function POST(req: Request) {
 
 export async function GET() {
   try {
-    const orders = db.prepare("SELECT * FROM orders ORDER BY id DESC").all();
+    const orders = await sql`SELECT * FROM orders ORDER BY id DESC`;
     return NextResponse.json({ ok: true, orders });
   } catch (error) {
     console.error("GET /api/orders error:", error);
