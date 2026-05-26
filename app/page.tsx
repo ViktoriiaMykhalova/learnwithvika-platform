@@ -710,11 +710,11 @@ Book your first free lesson
         <div class="lwv-price-badge" style="background:rgba(200,133,90,0.25);border-color:#c8855a;color:#fff">Individual · 8 lessons 🔥</div>
         <div class="lwv-price-name">Individual lessons</div>
         <div class="lwv-price-desc">Best value pack. Same personal approach, more progress — at a lower price per lesson.</div>
-        <div style="margin-bottom:4px">
-          <span style="font-family:'Playfair Display',serif;font-size:20px;color:#9a7860;text-decoration:line-through">560 zł</span>
-        </div>
-        <div class="lwv-price-amount">480 <span>zł</span></div>
-        <div class="lwv-price-note" style="color:#c8855a;font-weight:600">60 zł/lesson · save 14%</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px">
+  <span style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#c0392b;text-decoration:line-through">560 zł</span>
+  <span style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#f5ede3">480 zł</span>
+</div>
+<div class="lwv-price-note" style="color:#c8855a;font-weight:600">60 zł/lesson · save 14%</div>
         <ul class="lwv-price-features">
           <li>First lesson free</li>
           <li>Personal approach</li>
@@ -727,11 +727,11 @@ Book your first free lesson
         <div class="lwv-price-badge" id="lwv-pb2">⭐ Group · B1 level</div>
         <div class="lwv-price-name" id="lwv-pn2">B1 Mini-group</div>
         <div class="lwv-price-desc" id="lwv-pd2">Small group of 3–4 students at B1 level. Interactive, communicative, affordable. Duration: 3 months.</div>
-        <div style="margin-bottom:4px">
-          <span style="font-family:'Playfair Display',serif;font-size:20px;color:#9a7860;text-decoration:line-through">1200 zł</span>
-        </div>
-        <div class="lwv-price-amount">1000 <span id="lwv-pu2">zł</span></div>
-        <div class="lwv-price-note" id="lwv-pnote2" style="color:#c8855a;font-weight:600">per person · 3 months · save 17%</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px">
+  <span style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#c0392b;text-decoration:line-through">1200 zł</span>
+  <span style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#f5ede3">1000 zł</span>
+</div>
+<div class="lwv-price-note" id="lwv-pnote2" style="color:#c8855a;font-weight:600">per person · 3 months · save 17%</div>
         <ul class="lwv-price-features">
           <li id="lwv-pf2a">B1 CEFR level</li>
           <li id="lwv-pf2b">Max 3–4 students per group</li>
