@@ -392,7 +392,7 @@ const toggleTheme = () => {
         /* PRICING */
         .lwv-pricing { background: #1c0f08; }
         .lwv-pricing-grid {
-          display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;
+          display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px;
         }
         .lwv-price-card {
           background: #2e1a0e; border: 1px solid rgba(200,133,90,0.15);
@@ -693,26 +693,45 @@ Book your first free lesson
     <div class="lwv-divider"></div>
     <div class="lwv-pricing-grid">
       <div class="lwv-price-card">
-        <div class="lwv-price-badge" id="lwv-pb1">Individual · Packages</div>
+        <div class="lwv-price-badge" id="lwv-pb1">Individual · 4 lessons</div>
         <div class="lwv-price-name" id="lwv-pn1">Individual lessons</div>
         <div class="lwv-price-desc" id="lwv-pd1">Personal lessons with Viktoriia. Speaking, grammar, real-life English. First lesson is free.</div>
         <div class="lwv-price-amount">280 <span id="lwv-pu1">zł</span></div>
         <div class="lwv-price-note" id="lwv-pnote1">4-lesson package · 70 zł/lesson</div>
         <ul class="lwv-price-features">
           <li id="lwv-pf1a">First lesson free</li>
-          <li id="lwv-pf1b">8-lesson pack: 480 zł (60 zł each)</li>
           <li id="lwv-pf1c">Personal approach</li>
           <li id="lwv-pf1d">Flexible scheduling</li>
           <li id="lwv-pf1e">Speaking & grammar focus</li>
         </ul>
         <a href="/request" class="lwv-btn-secondary" style="text-align:center;justify-content:center" id="lwv-p1cta">Book free trial</a>
       </div>
+      <div class="lwv-price-card">
+        <div class="lwv-price-badge" style="background:rgba(200,133,90,0.25);border-color:#c8855a;color:#fff">Individual · 8 lessons 🔥</div>
+        <div class="lwv-price-name">Individual lessons</div>
+        <div class="lwv-price-desc">Best value pack. Same personal approach, more progress — at a lower price per lesson.</div>
+        <div style="margin-bottom:4px">
+          <span style="font-family:'Playfair Display',serif;font-size:20px;color:#9a7860;text-decoration:line-through">560 zł</span>
+        </div>
+        <div class="lwv-price-amount">480 <span>zł</span></div>
+        <div class="lwv-price-note" style="color:#c8855a;font-weight:600">60 zł/lesson · save 14%</div>
+        <ul class="lwv-price-features">
+          <li>First lesson free</li>
+          <li>Personal approach</li>
+          <li>Flexible scheduling</li>
+          <li>Speaking & grammar focus</li>
+        </ul>
+        <a href="/request" class="lwv-btn-primary" style="text-align:center;justify-content:center">Book 8 lessons</a>
+      </div>
       <div class="lwv-price-card featured">
         <div class="lwv-price-badge" id="lwv-pb2">⭐ Group · B1 level</div>
         <div class="lwv-price-name" id="lwv-pn2">B1 Mini-group</div>
-        <div class="lwv-price-desc" id="lwv-pd2">Small group of 3–4 students at B1 level. Interactive, communicative, affordable.</div>
-        <div class="lwv-price-amount">50 <span id="lwv-pu2">zł</span></div>
-        <div class="lwv-price-note" id="lwv-pnote2">per person per lesson · max 3–4 students</div>
+        <div class="lwv-price-desc" id="lwv-pd2">Small group of 3–4 students at B1 level. Interactive, communicative, affordable. Duration: 3 months.</div>
+        <div style="margin-bottom:4px">
+          <span style="font-family:'Playfair Display',serif;font-size:20px;color:#9a7860;text-decoration:line-through">1200 zł</span>
+        </div>
+        <div class="lwv-price-amount">1000 <span id="lwv-pu2">zł</span></div>
+        <div class="lwv-price-note" id="lwv-pnote2" style="color:#c8855a;font-weight:600">per person · 3 months · save 17%</div>
         <ul class="lwv-price-features">
           <li id="lwv-pf2a">B1 CEFR level</li>
           <li id="lwv-pf2b">Max 3–4 students per group</li>
