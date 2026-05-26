@@ -728,7 +728,7 @@ Book your first free lesson
         <div class="lwv-price-name" id="lwv-pn2">B1 Mini-group</div>
         <div class="lwv-price-desc" id="lwv-pd2">Small group of 3–4 students at B1 level. Interactive, communicative, affordable. Duration: 3 months.</div>
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px">
-  <span style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#c0392b;text-decoration:line-through">1200 zł</span>
+  <span style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#c0392b;text-decoration:line-through;white-space:nowrap">1200 zł</span>
   <span style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#f5ede3">1000 zł</span>
 </div>
 <div class="lwv-price-note" id="lwv-pnote2" style="color:#c8855a;font-weight:600">per person · 3 months · save 17%</div>
