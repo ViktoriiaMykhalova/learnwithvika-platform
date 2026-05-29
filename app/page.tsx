@@ -741,9 +741,7 @@ Book your first free lesson
         </ul>
         <a href="/request" class="lwv-btn-primary" style="text-align:center;justify-content:center" id="lwv-p2cta">Join the group</a>
       </div>
-      <div class="lwv-price-card">
-        <div class="lwv-price-badge" id="lwv-pb3">Digital · Self-study</div>
-       <div class="lwv-price-card" style="opacity:0.5;pointer-events:none;position:relative">
+      <div class="lwv-price-card" style="opacity:0.5;pointer-events:none;position:relative">
         <div style="position:absolute;top:12px;right:12px;background:rgba(200,133,90,0.2);border:1px solid rgba(200,133,90,0.4);color:#e8a87c;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;font-family:'DM Sans',system-ui">Coming soon</div>
         <div class="lwv-price-badge" id="lwv-pb3">Digital · Self-study</div>
         <div class="lwv-price-name" id="lwv-pn3">B1–B2 Pack</div>
@@ -757,7 +755,6 @@ Book your first free lesson
           <li id="lwv-pf3d">Useful phrases PDF</li>
         </ul>
         <div style="text-align:center;padding:14px;border-radius:100px;border:1px solid rgba(200,133,90,0.2);color:#9a7860;font-size:14px;font-family:'DM Sans',system-ui">🕐 Will be available soon</div>
-      </div>
       </div>
     </div>
   </div>
